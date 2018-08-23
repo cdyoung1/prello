@@ -1,0 +1,148 @@
+.board{
+    position:absolute;
+    min-width:100%;
+    height:100%;
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    top:0;
+    left:0;
+}
+.list-wrapper{
+    height:100%;
+    width:250px;
+    margin:0px 4px;
+    border:1px solid rgb(255, 165, 0);
+    box-sizing: border-box;
+}
+.list-container{
+    max-width:100%;
+    max-height: 100%;
+    border:2px solid green;
+    background: #e2e4e6;
+    color: #333;
+    display:flex;
+    flex-flow: column nowrap;
+    text-align:center;
+    box-sizing: border-box;
+}
+.list-header{
+    width:100%;
+    border:1px solid red;
+    cursor:pointer;
+}
+.card-container{
+    height:100%;
+    width:100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+.list-item{
+    height:100%;
+    width:100%;
+    text-align: center;
+    border:2px solid yellow;
+    width:100%;
+    /* min-height:40px; */
+    height:100%;
+    padding:10px 0px;
+    list-style: none;
+    box-sizing: border-box;
+    border-collapse: collapse;
+    margin:0;
+}
+.card{
+    display:inline-block;
+    width:95%;
+    border:1px solid black;
+    border-radius:5px;
+    background: #fff;
+    color: #444;
+    font-size: 2rem;
+    margin-bottom: 8px;
+    word-wrap: break-word;
+    overflow:hidden;
+    box-sizing: border-box;
+    cursor:pointer;
+    padding: 0px 5px;
+}
+.card-close-btn{
+    font-size: 1rem;
+    padding-left:10px;
+    cursor:pointer;
+}
+.add-card-btn{
+    cursor:pointer;
+}
+.add-card-sign{
+    display:inline-block;
+}
+.add-card-message{
+    display:inline-block;
+}
+.card-form{
+    width:95%;
+    margin:0 auto;
+    margin-top:10px;
+    font-size: 2rem;
+    box-sizing: border-box; 
+}
+.card-form textarea{
+    width:100%;
+    min-height: 75px;
+    border-radius: 5px;
+    overflow:hidden;
+    word-wrap: break-word;
+    resize: none;
+    padding:0;
+}
+.card-btn-row{
+    position:relative;
+    width:100%;
+    display:flex;
+    flex-flow: row wrap;
+    justify-content:space-between;
+}
+.card-btn-row-left{
+    text-align: left;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+.add-list-btn{
+    height:10%;
+    width:250px;
+    margin:0px 4px;
+    border:1px solid rgb(255, 165, 0);
+    box-sizing: border-box;
+    margin:0;
+    text-align: center;
+    display:flex;
+    flex-direction: row nowrap;
+    align-items: center;
+    justify-content: center;
+}
+.add-list-sign{
+    display:inline-block;
+}
+.add-list-message{
+    display:inline-block;
+}
+.hidden{
+    display:none;
+}
+
+.draggable-source--is-dragging {
+    background: rgba(1,1,1,0.4);
+    color:rgba(1,1,1,0);
+}
+.draggable-mirror{
+    border: 10px solid pink;
+    background:black;
+    transform: rotate(10deg);
+}
+
+.movement{
+    font-size:10px;
+}
