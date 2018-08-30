@@ -6,56 +6,12 @@
   <title>Prello</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-  <link rel="stylesheet" href="stylsheets/loginstyle.css"/>
+  <link rel="stylesheet" href="stylesheets/style.css"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 </head>
 <body>
-  <div id="login-page">
-    <div id="login-form">
-      <fieldset>
-        <legend>Log in to Prello</legend>
-
-        <label for="email">Email</label>
-        <input type="email" name="login-email" id="login-email" tabindex="1" placeholder="e.g., prello@gmail.com" pattern="([a-z0-9][-a-z0-9_\+\.]*[a-z0-9])@([a-z0-9][-a-z0-9\.]*[a-z0-9]\.(arpa|root|aero|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|ac|ad|ae|af|ag|ai|al|am|an|ao|aq|ar|as|at|au|aw|ax|az|ba|bb|bd|be|bf|bg|bh|bi|bj|bm|bn|bo|br|bs|bt|bv|bw|by|bz|ca|cc|cd|cf|cg|ch|ci|ck|cl|cm|cn|co|cr|cu|cv|cx|cy|cz|de|dj|dk|dm|do|dz|ec|ee|eg|er|es|et|eu|fi|fj|fk|fm|fo|fr|ga|gb|gd|ge|gf|gg|gh|gi|gl|gm|gn|gp|gq|gr|gs|gt|gu|gw|gy|hk|hm|hn|hr|ht|hu|id|ie|il|im|in|io|iq|ir|is|it|je|jm|jo|jp|ke|kg|kh|ki|km|kn|kr|kw|ky|kz|la|lb|lc|li|lk|lr|ls|lt|lu|lv|ly|ma|mc|md|mg|mh|mk|ml|mm|mn|mo|mp|mq|mr|ms|mt|mu|mv|mw|mx|my|mz|na|nc|ne|nf|ng|ni|nl|no|np|nr|nu|nz|om|pa|pe|pf|pg|ph|pk|pl|pm|pn|pr|ps|pt|pw|py|qa|re|ro|ru|rw|sa|sb|sc|sd|se|sg|sh|si|sj|sk|sl|sm|sn|so|sr|st|su|sv|sy|sz|tc|td|tf|tg|th|tj|tk|tl|tm|tn|to|tp|tr|tt|tv|tw|tz|ua|ug|uk|um|us|uy|uz|va|vc|ve|vg|vi|vn|vu|wf|ws|ye|yt|yu|za|zm|zw)|([0-9]{1,3}\.{3}[0-9]{1,3}))"
-        size="30" required title="Must be a valid email address" />
-
-        <label for="password">Password</label>
-        <input type="password" name="login-password" id="login-password" tabindex="2" placeholder="e.g., ••••••••••••" autocomplete="current-password"required />
-
-        <div id="login-submit-container">
-          <input type="submit" value="Log In"  name="login-submit" id="login-submit" tabindex="3">
-        </div>
-      </fieldset>
-    </div>
-    <div id="register-form">
-        <fieldset>
-            <legend>Create a Prello Account</legend>
-
-            <div id="register-name">
-              <label for="first-name" id="first-name">First Name</label>
-              <label for="last-name" id="last-name">Last Name</label>
-            </div>
-
-            <div id="register-name-form">
-              <input type="text" name="register-first-name" id="register-first-name" tabindex="4" placeholder="e.g., John" pattern="[A-Za-z'\s]+" required />
-              <input type="text" name="register-last-name" id="register-last-name" tabindex="5" placeholder="e.g., Smith" pattern="[A-Za-z'\s]+" required />
-            </div>
-           
-            <label for="email">Email</label>
-            <input type="email" name="register-email" id="register-email" tabindex="6" placeholder="e.g., johnsmith@gmail.com" pattern="([a-z0-9][-a-z0-9_\+\.]*[a-z0-9])@([a-z0-9][-a-z0-9\.]*[a-z0-9]\.(arpa|root|aero|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|ac|ad|ae|af|ag|ai|al|am|an|ao|aq|ar|as|at|au|aw|ax|az|ba|bb|bd|be|bf|bg|bh|bi|bj|bm|bn|bo|br|bs|bt|bv|bw|by|bz|ca|cc|cd|cf|cg|ch|ci|ck|cl|cm|cn|co|cr|cu|cv|cx|cy|cz|de|dj|dk|dm|do|dz|ec|ee|eg|er|es|et|eu|fi|fj|fk|fm|fo|fr|ga|gb|gd|ge|gf|gg|gh|gi|gl|gm|gn|gp|gq|gr|gs|gt|gu|gw|gy|hk|hm|hn|hr|ht|hu|id|ie|il|im|in|io|iq|ir|is|it|je|jm|jo|jp|ke|kg|kh|ki|km|kn|kr|kw|ky|kz|la|lb|lc|li|lk|lr|ls|lt|lu|lv|ly|ma|mc|md|mg|mh|mk|ml|mm|mn|mo|mp|mq|mr|ms|mt|mu|mv|mw|mx|my|mz|na|nc|ne|nf|ng|ni|nl|no|np|nr|nu|nz|om|pa|pe|pf|pg|ph|pk|pl|pm|pn|pr|ps|pt|pw|py|qa|re|ro|ru|rw|sa|sb|sc|sd|se|sg|sh|si|sj|sk|sl|sm|sn|so|sr|st|su|sv|sy|sz|tc|td|tf|tg|th|tj|tk|tl|tm|tn|to|tp|tr|tt|tv|tw|tz|ua|ug|uk|um|us|uy|uz|va|vc|ve|vg|vi|vn|vu|wf|ws|ye|yt|yu|za|zm|zw)|([0-9]{1,3}\.{3}[0-9]{1,3}))"
-            size="30" required title="Must be a valid email address" />
-    
-            <label for="password">Password</label>
-            <input type="password" name="register-password" id="register-password" tabindex="7" placeholder="e.g., ••••••••••••" minlength="6" autocomplete="current-password"required />
-            
-            <div id="register-submit-container">
-              <input type="submit" value="Create New Account" name="create-submit" id="register-submit" tabindex="8">
-            </div>
-          </fieldset>
-    </div>
-  </div>
-  <!-- <div id="nav">
+  <div id="nav">
     <div class="nav-left">
       <div  id="nav-home"><a href="#"><i class="fas fa-home"></i></a></div>
       <div id="nav-boards">
@@ -142,11 +98,10 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.2/lib/draggable.js"></script>
-  <script src="javascripts/login.js"></script>
-  <!-- <script src="script.js"></script> -->
+  <script src="javascripts/script.js"></script>
 </body>
 
 </html>
