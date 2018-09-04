@@ -334,20 +334,6 @@ $('.list-form').on('click', '.list-add-btn', function(e) {
     $(listForm).addClass('hidden');
 
 });
-// $('.label-content').on('keyup', function(e) {
-//     let labelFormContent = $('.label-content')[0].value;
-//     searchString = '';
-//     console.log(labelFormContent);
-//     if(searching == false) {
-//         if(e.which == 50){
-//             searching = true;
-
-//         }
-//     } else if (searching == true) {
-//         searchString = 
-//     }
-
-// })
 $('.comment-container').on('click', '.submit-comment-btn', function(e) {
     let commentContent = $('.comment-content')[0].value;
     console.log(commentContent);
@@ -370,6 +356,19 @@ $('.comment-container').on('click', '.submit-comment-btn', function(e) {
         `);
     }
     $('.comment-content')[0].value = '';
+})
+$('#sign-out-btn').on('click', function(e) {
+    $.ajax({
+        url: 'http://localhost:3000/logout',
+        method: 'GET'
+    })
+    .done(function(e) {
+        window.location.href = 'http://localhost:3000/login'
+        console.log('logged out');
+    })
+    .fail(function(error) {
+        console.log(error)
+    })
 })
 /*
 an array of lists

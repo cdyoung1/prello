@@ -8,6 +8,7 @@ var cors = require('cors');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
+var boardsRouter = require('./routes/boards')
 var sequelize = require('sequelize');
 var app = express();
 
@@ -28,11 +29,13 @@ app.use(session({
   secret: 'eg[isfd-8yF9-7w2315df{}+Ijsli;;to8',
   duration: 30 * 60 * 1000,
   activeDuration: 5 * 60 * 1000,
+  httpOnly: true,
+  secure: true,
+  ephemeral: true
 }));
 
 app.use('/login', loginRouter);
 function requireLogin (req, res, next) {
-  console.log('hello',req.session)
   if (!req.session.user) {
     console.log('redirecting')
     res.render('login', {})
@@ -42,9 +45,13 @@ function requireLogin (req, res, next) {
   }
 };
 app.use(requireLogin);
+app.use('/boards', boardsRouter);
 app.use('/', indexRouter);
-console.log('after')
 app.use('/users', usersRouter);
+app.get('/logout', function(req, res) {
+  req.session.reset();
+  res.redirect('/');
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -59,7 +66,6 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
 });
 
 module.exports = app;

@@ -11,7 +11,7 @@ body{
     -ms-user-select: none;
     user-select: none;
 }
-.board-body{
+.board-body-container{
     position:absolute;
     min-width:100%;
     height:92.5%;
@@ -73,6 +73,9 @@ h3{
 #nav-list a{
     color:white;
     text-decoration: none;
+}
+#sign-out-btn{
+    cursor: pointer;
 }
 .lists-container{
     height:100%;

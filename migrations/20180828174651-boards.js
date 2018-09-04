@@ -33,7 +33,8 @@ module.exports = {
         references: {
           model: 'teams',
           key: 'id',
-        }
+        },
+        allowNull: true
       },
       
     })

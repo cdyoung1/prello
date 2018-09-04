@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Boards | Prello</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <link rel="stylesheet" href="stylesheets/boards.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+</head>
+<body>
+  <div id="nav">
+    <div class="nav-left">
+      <div  id="nav-home"><a href="#"><i class="fas fa-home"></i></a></div>
+      <div id="nav-boards">
+        <i class="fab fa-flipboard nav-board-icon"></i>
+        <h4 class="nav-board-title">Boards</h4>
+      </div>
+      <div id="nav-search">
+        <i class="fas fa-search"></i>
+        <span class="hidden"><i class="fas fa-times"></i></span>
+      </div>
+    </div>
+    <h3 class="title">Prello</h3>
+    <div class="nav-right">
+      <div id="nav-add-btn">
+        <span><i class="fas fa-plus"></i></span>
+      </div>
+      <div id="sign-out-btn">
+        <i class="fas fa-sign-out-alt"></i>
+      </div>
+    </div>
+  </div>
+  <div class="board-body-container">
+    <div class="board-body">
+      <div class="board-body-title">
+        <span class="personal-board-icon"><i class="fas fa-user-alt"></i></span>
+        <h4 class="personal-board-title">Personal Boards</h4>
+      </div>
+      <div class="board-list-container">
+        <div class="board-list">
+          <div class="open-board-form">
+            <h4>Create New Board</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="board-form-container hidden">
+    <div class="board-form-bg"></div>
+    <div class="board-form">
+      <div class="board-form-content">
+        <div class="title-container">
+          <input type="text" name="board-title" class="board-form-title" placeholder="Add board title" required />
+          <div class="close-board-btn"><i class="fas fa-times"></i></div>
+        </div>
+      </div>
+      <div class="board-grid"></div>
+      <button class="add-board-btn">Create Board</button>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="javascripts/boards.js"></script>
+</body>
+</html>
