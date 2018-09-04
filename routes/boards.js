@@ -10,27 +10,26 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/personal', function(req,res,next) {
-  let boardTitle = req.body.title;
+  let title = req.body.title;
   let ownerID = req.session.user.id;
 
   let insertQuery = `
-  INSERT INTO boards (title, ownerID)
+  INSERT INTO boards ("title", "ownerID", "lastViewed")
   VALUES
-    ('${boardTitle}', '${ownerID}')
+    ('${title}', '${ownerID}', DEFAULT)
   RETURNING
   *
   `
   db.sequelize.query(insertQuery, {
-    type: db.sequelize.QueryTypes.INSERT,
-    replacements: {
-      title: boardTitle,
-      ownerID: ownerID
-    }
+    type: db.sequelize.QueryTypes.INSERT
   })
   .then(response => {
-    res.render('index', {});
+    console.log(response[0][0]);
+    req.session.currentBoard = response[0][0];
+    res.status(200).render('index.ejs', {title: 'Prello | Lists'});
   })
   .catch(err => {
+    console.error(err);
     res.send(err);
   })
 })

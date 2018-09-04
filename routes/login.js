@@ -78,10 +78,12 @@ router.post('/signup', function(req,res,next) {
                     }
                 })
                 .then(response => {
+                    console.log(response[0][0]);
                     let newUser = response[0][0];
                     delete newUser.password;
-                    let initials = newUser.first.charAt(0)+newUsers.last.charAt(0);
-                    res.render('boards', {initials: initials});
+                    req.session.user = newUser;
+                    let initials = newUser.first.charAt(0)+newUser.last.charAt(0);
+                    res.render('boards');
                 })
                 .catch(err => {
                     console.error(err);
@@ -130,10 +132,11 @@ router.post('/', function(req, res,next) {
         }
         bcrypt.compare(`'${password}'`, response[0].password, function(err, passwordres) {
             if(passwordres) {
+                console.log('response', response);
                 delete response[0].password; // delete the password from the session
                 req.session.user = response[0];  //refresh the session value
                 res.locals.user = response[0];
-                res.status(200).json(req.session.user);
+                res.status(200).render('boards', {});
                 // res.status(200).send({id: req.session.user.id});
             } else {
                 console.log('wrong password')

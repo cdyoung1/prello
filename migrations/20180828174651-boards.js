@@ -16,7 +16,7 @@ module.exports = {
       },
       lastViewed: {
         type: Sequelize.DATE,
-        defaultValue: Sequelize.NOW,
+        defaultValue: Sequelize.fn('NOW'),
         allowNull:false
       },
       ownerID: {
@@ -29,12 +29,12 @@ module.exports = {
       },
       teamID: {
         type:Sequelize.INTEGER,
-        primaryKey: true,
         references: {
           model: 'teams',
           key: 'id',
         },
-        allowNull: true
+        allowNull: true,
+        defaultValue: null
       },
       
     })

@@ -36,21 +36,24 @@ app.use(session({
 
 app.use('/login', loginRouter);
 function requireLogin (req, res, next) {
+  console.log('user', req.session.user);
   if (!req.session.user) {
     console.log('redirecting')
-    res.render('login', {})
+    res.redirect('/login')
     return;
   } else {
     next();
   }
 };
-app.use(requireLogin);
+app.use('/boards', requireLogin);
+app.use('/users', requireLogin);
+app.use('/', requireLogin);
 app.use('/boards', boardsRouter);
-app.use('/', indexRouter);
+app.use('/index', indexRouter);
 app.use('/users', usersRouter);
 app.get('/logout', function(req, res) {
   req.session.reset();
-  res.redirect('/');
+  res.redirect('/login');
 });
 
 // catch 404 and forward to error handler

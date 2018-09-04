@@ -37,4 +37,17 @@ $('.add-board-btn').on('click', function(e) {
     `);
     $('.board-form').find('.board-form-title')[0].value = '';
     closeBoardForm(e);
+    $.ajax({
+        url: 'http://localhost:3000/boards/personal',
+        method: 'POST',
+        data: {
+            title: newBoardTitle
+        }
+    })
+    .done(function() {
+        window.location.href = 'http://localhost:3000/index';
+    })
+    .fail(function(err) {
+        console.error(err);
+    })
 })
