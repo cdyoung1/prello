@@ -41,6 +41,11 @@
       </div>
       <div class="board-list-container">
         <div class="board-list">
+          <% boards.forEach(function(board) { %>
+            <div class="board">
+                <h4 class="board-title"><%= board.title %></h4>
+            </div>
+          <% }); %>
           <div class="open-board-form">
             <h4>Create New Board</h4>
           </div>

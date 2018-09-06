@@ -7,7 +7,7 @@ var saltRounds = 10;
 var db = require('../models/index');
 /* GET home page. */
 router.get('/', function(req,res){
-    res.render('login', {});
+    res.render('login', {boards: req.session.currentBoards});
     return;
 })
 router.post('/signup', function(req,res,next) {
@@ -83,7 +83,7 @@ router.post('/signup', function(req,res,next) {
                     delete newUser.password;
                     req.session.user = newUser;
                     let initials = newUser.first.charAt(0)+newUser.last.charAt(0);
-                    res.render('boards');
+                    res.render('boards', {boards: []});
                 })
                 .catch(err => {
                     console.error(err);
@@ -136,8 +136,7 @@ router.post('/', function(req, res,next) {
                 delete response[0].password; // delete the password from the session
                 req.session.user = response[0];  //refresh the session value
                 res.locals.user = response[0];
-                res.status(200).render('boards', {});
-                // res.status(200).send({id: req.session.user.id});
+                res.status(200).redirect('boards');
             } else {
                 console.log('wrong password')
                 return;

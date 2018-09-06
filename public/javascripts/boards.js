@@ -45,9 +45,40 @@ $('.add-board-btn').on('click', function(e) {
         }
     })
     .done(function() {
-        window.location.href = 'http://localhost:3000/index';
+        window.location.href = 'http://localhost:3000/lists';
     })
     .fail(function(err) {
+        console.error(err);
+    })
+})
+
+$('.board-list').on('click', '.board', function(e) {
+    let boardIndex = $(this).index();
+    console.log('hi the', boardIndex);
+    $.ajax({
+        url: 'http://localhost:3000/lists/current',
+        method: 'POST',
+        data: {
+            index: boardIndex
+        }
+    })
+    .done(function() {
+        window.location.href = 'http://localhost:3000/lists';
+    })
+    .fail(err => {
+        console.error(err);
+    })
+})
+
+$('#nav-boards').on('click', function(e) {
+    $.ajax({
+        url: 'http://localhost:3000/boards',
+        method: 'GET',
+    })
+    .done(function(e) {
+        window.location.href = 'http://localhost:3000/boards';
+    })
+    .fail(err => {
         console.error(err);
     })
 })

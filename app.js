@@ -5,8 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('client-sessions');
 var cors = require('cors');
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var listsRouter = require('./routes/lists');
 var loginRouter = require('./routes/login');
 var boardsRouter = require('./routes/boards')
 var sequelize = require('sequelize');
@@ -42,15 +41,17 @@ function requireLogin (req, res, next) {
     res.redirect('/login')
     return;
   } else {
+    console.log('next');
     next();
   }
 };
-app.use('/boards', requireLogin);
-app.use('/users', requireLogin);
 app.use('/', requireLogin);
+app.use('/boards', requireLogin);
+app.get('/', function(req,res) {
+  res.redirect('/boards');
+})
 app.use('/boards', boardsRouter);
-app.use('/index', indexRouter);
-app.use('/users', usersRouter);
+app.use('/lists', listsRouter);
 app.get('/logout', function(req, res) {
   req.session.reset();
   res.redirect('/login');

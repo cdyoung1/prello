@@ -36,6 +36,11 @@ module.exports = {
         allowNull: true,
         defaultValue: null
       },
+      createdAt: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.fn('NOW')
+      }
       
     })
   },

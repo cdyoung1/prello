@@ -35,7 +35,6 @@ $(function(){
     });
     $('.board-body').on('mousedown', '.list-wrapper', function(e){
         let target = $(e.target)[0];
-        console.log($(target).closest('.list'))
         if($(target).closest('.list').length==0){
             curDown = true;
             curYPos = e.pageY;
@@ -51,7 +50,6 @@ $(function(){
       }
       curYPos = m.pageY;
       curXPos = m.pageX;
-      console.log(curDown)
     });
     
     $(window).mouseup(function(){
@@ -175,12 +173,26 @@ draggableList = new window.Draggable.Sortable($('.list-header'), {
     draggable: '.list-wrapper'
 });
 
-draggableList.on('drag:stop', function(){
+draggableList.on('drag:stop', function(e){
     setTimeout(function(){
         addBtnMessage();
     }, 50)
 });
+    $('.lists-container').on('mouseup', '.list-wrapper', function(e) {
+        console.log('mouseup', $(this).index());
+    })  
+    $('.lists-container').on('mousedown', '.list-wrapper', function(e) {
+        console.log('mousedown', $(this).index());
+    })  
+// $('.lists-container').on('mouseup', '.list-wrapper', function(e) {
+//     $('.lists-container').on('mousedown', '.list-wrapper', function(e) {
+//         console.log('mousedown', $(this).index());
+//     });
+//     console.log('mouseup', $(this).index());
+//     $.ajax({
 
+//     })
+// })
 
 function cardCloseForm(e){
     let accessForm = $(e.target.closest('.list')).find('.card-form')[0];
@@ -234,7 +246,9 @@ $('.lists-container').on('click','.card-add-btn', function(e){
         $('.modal-title')[0].innerHTML = cardTitle;
         $('.modal-list-title')[0].innerHTML = `in list: ${parentListHeader}`;
     })
-    
+    $('.list-container').on('drag:stop', draggableList, function(e) {
+        console.log('INDEX', $(this).index());
+    })
     $('.card-list').on('drag:start', draggableCard, function(e){
         let moving;
         $(this).on('drag:move', function(){
@@ -303,6 +317,21 @@ $('.list-form').on('click', '.list-add-btn', function(e) {
     </div>
   </div>
     `);
+    let order = $('.lists-container').find('.list-wrapper').length-1
+    $.ajax({
+        url: 'http://localhost:3000/lists/create',
+        method: 'POST',
+        data: {
+            name: listTitle,
+            order: order
+        }
+    })
+    .done(function(e) {
+        console.log(e)
+    })
+    .fail(err => {
+        console.error(err);
+    })
     addBtnMessage();
     draggableCard.destroy();
     draggableList.destroy();
@@ -315,14 +344,16 @@ $('.list-form').on('click', '.list-add-btn', function(e) {
     draggableList = new window.Draggable.Sortable($('.list-header'), {
         draggable: '.list-wrapper'
     });
-
+    $('.list-container').on('drag:stop', draggableList, function(e) {
+        console.log('INDEX', $(this).index());
+    })
     draggableCard.on('drag:stop', function(){
         setTimeout(function(){
             addBtnMessage();
         }, 50)
     });
 
-    draggableList.on('drag:stop', function(){
+    draggableList.on('drag:stop', function(e){
         setTimeout(function(){
             addBtnMessage();
         }, 50)
@@ -368,6 +399,18 @@ $('#sign-out-btn').on('click', function(e) {
     })
     .fail(function(error) {
         console.log(error)
+    })
+})
+$('#nav-boards').on('click', function(e) {
+    $.ajax({
+        url: 'http://localhost:3000/boards',
+        method: 'GET',
+    })
+    .done(function(e) {
+        window.location.href = 'http://localhost:3000/boards';
+    })
+    .fail(err => {
+        console.error(err);
     })
 })
 /*

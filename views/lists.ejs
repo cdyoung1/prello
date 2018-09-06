@@ -6,7 +6,7 @@
   <title>Prello | Lists</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-  <link rel="stylesheet" href="stylesheets/style.css"/>
+  <link rel="stylesheet" href="stylesheets/lists.css"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 </head>
@@ -34,7 +34,37 @@
     </div>
   </div>
   <div class="board-body">
-    <div class="lists-container"></div>
+    <div class="lists-container">
+      <% lists.forEach(function(list) { %>
+        <div class="list-wrapper">
+            <div class="list  draggable-list">
+              <div class="list-header">
+                <h4><%= list.name %></h4>  
+              </div>
+              <div class="card-container">
+                <div class="card-list">
+                </div>
+                <div class="card-form hidden">
+                  <textarea name="card-content" class="card-content" placeholder="Enter a title for this card..." required></textarea>
+                  <div class="card-btn-row">
+                    <div class="card-btn-row-left">
+                      <button class="card-add-btn">Add Card</button>
+                      <i class="fas fa-times card-close-btn"></i>
+                    </div>
+                    <div class="card-add-options">
+                      <i class="fas fa-ellipsis-h"></i>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              <div class="open-card-form">
+                <i class="fas fa-plus card-form-sign"></i>
+                <h4 class="card-form-message"></h4>
+              </div>
+            </div>
+          </div>
+      <% }); %>
+    </div>
     <div class="open-list-form">
         <i class="fas fa-plus open-list-sign"></i>
         <h4 class="open-list-message"></h4>
@@ -101,7 +131,7 @@
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.2/lib/draggable.js"></script>
-  <script src="javascripts/script.js"></script>
+  <script src="javascripts/lists.js"></script>
 </body>
 
 </html>

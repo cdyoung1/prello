@@ -61,6 +61,9 @@ h3{
     align-items:center;
     justify-content: flex-start;
 }
+#nav-boards {
+    cursor:pointer;
+}
 .nav-board-icon, .nav-board-title{
     display:inline-block;
 }
